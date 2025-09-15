@@ -6,10 +6,11 @@ import { PiFilmReelLight } from "react-icons/pi";
 import { FaStar } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-
+  const [isSearchMode, setIsSearchMode] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50); // if scrolled more than 50px
@@ -18,18 +19,23 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleSearch = () => {
+    setIsSearchMode((prev) => !prev);
+  };
+
   return (
     <div>
       {/* Fixed Navbar */}
       <div
-        className={`fixed top-0 left-0 w-full z-50 ${
-          isScrolled ? "bg-[#121214] shadow-2xl" : "bg-transparent"
+        className={`fixed  top-0 left-0 w-full z-50 ${
+          isScrolled ? "bg-[#19191a] shadow-2xl" : "bg-transparent"
         }  px-[10%] py-6 text-white`}
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center gap-y-[1rem] flex-wrap lg:flex-nowrap justify-between">
           {/* Left Side */}
-          <ul className="flex items-center font-semibold gap-7">
-            <li className="w-[6rem]">
+          <ul className="flex items-center text-sm  md:text-base   font-semibold gap-4">
+            <li className="w-[4rem] md:w-[6rem]">
               <img
                 className="object-contain w-full"
                 src="/disneyHeaderLogo.svg"
@@ -66,7 +72,7 @@ const Navbar = () => {
 
             {/* Movies */}
             <NavLink
-              to="/movies"
+              to="/movie"
               className={({ isActive }) =>
                 `flex items-center gap-2 ${
                   isActive ? "text-[#02E7F5]" : "text-white"
@@ -92,13 +98,20 @@ const Navbar = () => {
           </ul>
 
           {/* Right Side */}
-          <ul className="flex font-semibold items-center gap-6">
+          <ul className="flex font-semibold xl:w-[60%] text-sm md:text-base   justify-end items-center gap-6">
             {/* Search */}
-            <li className="flex items-center gap-2">
-              <span className="  text-xl ">
-                <FaSearch />
-              </span>
-              <Link>Search</Link>
+            <li className="flex  xl:w-[44%] justify-end items-center gap-2">
+              {isSearchMode ? (
+                <SearchBar setIsSearchMode={setIsSearchMode} />
+              ) : (
+                <button
+                  onClick={handleSearch}
+                  className=" flex  items-center gap-2 text-lg  "
+                >
+                  <FaSearch />
+                  <Link>Search</Link>
+                </button>
+              )}
             </li>
             <li className="flex items-center gap-2">
               <span className="  text-xl ">

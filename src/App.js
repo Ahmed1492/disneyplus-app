@@ -16,7 +16,7 @@ function App() {
         <Route path='/originals' element={<Originals />} />
         <Route path='/series' element={<Series />} />
         <Route path='/series/:title' element={<SingleTvShow />} />
-        <Route path='/movies' element={<Movies />} />
+        <Route path='/movie' element={<Movies />} />
         <Route path='/movie/:title' element={<SingleMovie />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />

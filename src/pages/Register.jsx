@@ -26,7 +26,8 @@ export const Register = () => {
       setError("");
 
       let myResponse = await axios.post(
-        "http://localhost:2000/register",
+        // "http://localhost:2000/register",
+        "https://dc77528ae38f.ngrok-free.app/Registers/SignUp",
         userData
       );
       console.log(myResponse.data);

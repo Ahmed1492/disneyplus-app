@@ -4,9 +4,9 @@ import { FaClock } from "react-icons/fa";
 
 const HomeSlider = ({ data, type }) => {
   let [index, setIndex] = useState(0);
-  console.log("data ", data);
-  console.log("index ", index);
-  console.log(`data [${index}]`, data[index]);
+  // console.log("data ", data);
+  // console.log("index ", index);
+  // console.log(`data [${index}]`, data[index]);
 
   const handleSlider = (newIndex) => {
     setIndex(newIndex);
@@ -21,7 +21,7 @@ const HomeSlider = ({ data, type }) => {
   // }, []);
 
   return (
-    <div className="">
+    <div className=" h-[100vh] ">
       <div
         style={{
           backgroundImage: `
@@ -36,15 +36,15 @@ const HomeSlider = ({ data, type }) => {
       url('${data[index]?.background}')
     `,
         }}
-        className=" backgroundHero flex  w-[100vw] h-[100vh]  "
+        className=" backgroundHero sm:bg-cover1  flex h-full   "
       >
         <div className="text-white z-10 px-[10%] flex flex-col  items-start  h-full">
-          <div className="flex flex-col gap-3 self-end h-full  justify-center">
+          <div className="flex flex-col items-end bgs-green-500 gap-3  h-full justify-center">
             {type === "series" && (
-              <div className="flex items-center gap-4 mb-[11rem] self-start">
-                <h1 className="text-3xl font-bold">Series</h1>
+              <div className="flex  mt-[5rem] md:mt-0 items-center  gap-4 mb-[11rem] self-start">
+                <h1 className="text-xl md:text-3xl font-bold">Series</h1>
                 <select
-                  className="bg-gray-700 py-2 px-6 rounded-md outline-none cursor-pointer"
+                  className="bg-gray-700   py-2 px-3 rounded-md outline-none cursor-pointer"
                   name=""
                   id=""
                 >
@@ -57,22 +57,27 @@ const HomeSlider = ({ data, type }) => {
             )}
 
             {/* SERIES OPTION */}
-
-            <img className="w-[19rem]" src={data[index]?.logo} alt="" />
-            <p className="max-w-[44%] text-lg font-extralight">
-              {data[index]?.desc || " "}
-            </p>
-            <div className="flex items-center mt-[2rem] gap-5">
-              <button className="bg-white px-6 flex items-center gap-4 py-3 text-sm rounded-md text-black font-bold">
-                <span>
-                  <FaPlay />
-                </span>
-                WATCH NOW
-              </button>
-              <button className="bg-transparent text-sm px-6 flex items-center gap-4 py-3 border rounded-md  font-semibold">
-                <FaClock />
-                MORE INFORMATION
-              </button>
+            <div className="flex flex-col bgs-red-600 gap-4 items-start  lg:items-start justify-end lg:h-auto ">
+              <img
+                className=" w-[9rem]  lg:w-[12rem] xl:w-[19rem]"
+                src={data[index]?.logo}
+                alt=""
+              />
+              <p className=" max-w-[96%] md:max-w-[70%] lg:max-w-[44%]  md:text-lg font-extralight">
+                {data[index]?.desc || " "}
+              </p>
+              <div className="flex items-center mt-[2rem] gap-5">
+                <button className="bg-white px-3 py-3 md:px-6 md:py-3 flex items-center gap-4  text-sm rounded-md text-black font-bold">
+                  <span>
+                    <FaPlay />
+                  </span>
+                  WATCH NOW
+                </button>
+                <button className="bg-transparent text-sm px-3 py-3 md:px-6 md:py-3 flex items-center gap-4  border rounded-md  font-semibold">
+                  <FaClock />
+                  MORE INFORMATION
+                </button>
+              </div>
             </div>
           </div>
           {/* SERIES OPTION */}
@@ -80,14 +85,14 @@ const HomeSlider = ({ data, type }) => {
           {/* Drag */}
 
           <div className="flex items-center justify-end w-full mb-4 gap-3">
-            <div className="flex items-center justify-end w-full mb-4 gap-2">
-              {Array(4)
+            <div className="flex items-center mt-[2rem] md:mt-0  justify-center md:justify-end w-full mb-4 gap-2">
+              {Array(data?.length)
                 .fill()
                 .map((_, newIndex) => (
                   <span
                     key={newIndex}
                     onClick={() => handleSlider(newIndex)}
-                    className={`w-[10px] h-[10px] rounded-full ${
+                    className={`w-[5px] h-[5px] md:w-[10px] md:h-[10px] rounded-full ${
                       index === newIndex ? "bg-[#02E7F5]" : "bg-gray-600"
                     } cursor-pointer relative`}
                   ></span>
@@ -111,29 +116,29 @@ const HomeSlider = ({ data, type }) => {
 
           {/* PRANSD */}
           {type === "hero" && (
-            <div className=" flex items-center mt-[3rem] pb-5 w-full justify-between gap-2">
+            <div className=" flex items-center justify-center flex-wrap mt-[3rem] pb-5 w-full md:justify-between gap-2">
               <img
-                className="w-[13rem] object-cover h-[7rem] border rounded-md border-gray-800 bg-z"
+                className=" w-[7rem] h-[4rem] lg:w-[13rem] lg:h-[7rem] object-cover border rounded-md border-gray-800 bg-z"
                 src="/disneyLogo.svg"
                 alt=""
               />
               <img
-                className="w-[13rem] object-cover h-[7rem] border rounded-md border-gray-800 bg-z"
+                className="w-[7rem] h-[4rem] lg:w-[13rem] lg:h-[7rem] object-cover border rounded-md border-gray-800 bg-z"
                 src="/pixarLogo.svg"
                 alt=""
               />
               <img
-                className="w-[13rem] object-cover h-[7rem] border rounded-md border-gray-800 bg-z"
+                className="w-[7rem] h-[4rem] lg:w-[13rem] lg:h-[7rem] object-cover border rounded-md border-gray-800 bg-z"
                 src="/marvelLogo.svg"
                 alt=""
               />
               <img
-                className="w-[13rem] object-cover h-[7rem] border rounded-md border-gray-800 bg-z"
+                className="w-[7rem] h-[4rem] lg:w-[13rem] lg:h-[7rem] object-cover border rounded-md border-gray-800 bg-z"
                 src="/starwarsLogo.svg"
                 alt=""
               />
               <img
-                className="w-[13rem] object-cover h-[7rem] border rounded-md border-gray-800 bg-z"
+                className="w-[7rem] h-[4rem] lg:w-[13rem] lg:h-[7rem] object-cover border rounded-md border-gray-800 bg-z"
                 src="/nationalLogo.svg"
                 alt=""
               />

@@ -195,7 +195,7 @@ const Originals = () => {
 
   return (
     <>
-      <div className="min-h-[154rem] flex flex-col bg-[#121214]">
+      <div className=" flex flex-col bg-[#121214]">
         <Navbar />
 
         <main className="flex-grow flex flex-col gap-[2rem]">

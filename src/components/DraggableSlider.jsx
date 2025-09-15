@@ -20,29 +20,31 @@ const DraggableSlider = ({ movies, type, time, path }) => {
   //   return () => clearInterval(interval); // Cleanup on unmount
   // }, [currentIndex]);
   return (
-    <div className={`px-[10%]   overflow-x-hidden lg:overflow-x-hidden  `}>
-      <div className="flex items-center justify-betweenx ">
+    <div className={`px-[10%]  overflow-x-scroll lg:overflow-x-hidden  `}>
+      <div className="flex items-center   justify-betweenx ">
         {/* Drag */}
-        <div className="flex items-center justify-end w-full  gap-3">
+        <div className="flex items-center  justify-end w-full  gap-3">
           <h1 className="text-white text-xl whitespace-nowrap font-bold mb-3">
             {type}
           </h1>
           <div className="flex items-center justify-end w-full  gap-2">
-            {Array(4)
-              .fill()
-              .map((_, newIndex) => (
-                <span
-                  onClick={() => handleDrag(newIndex)}
-                  key={newIndex}
-                  className={`w-[8px] h-[8px] rounded-full ${
-                    currentIndex === newIndex ? "bg-[#02E7F5]" : "bg-gray-600"
-                  } cursor-pointer relative`}
-                ></span>
-              ))}
+            {type !== "Similares" &&
+              movies?.length > 5 &&
+              Array(Math.round(movies?.length/5))
+                .fill()
+                .map((_, newIndex) => (
+                  <span
+                    onClick={() => handleDrag(newIndex)}
+                    key={newIndex}
+                    className={`w-[5px] h-[5px] md:w-[8px] md:h-[8px] rounded-full ${
+                      currentIndex === newIndex ? "bg-[#02E7F5]" : "bg-gray-600"
+                    } cursor-pointer relative`}
+                  ></span>
+                ))}
           </div>
         </div>
       </div>
-      <div className=" overflow-x-auto lg:overflow-x-hidden scrollbar-hide  w-[100vw] duration-75 transition-all  ">
+      <div className=" overflow-x-autqo overflow-x-scroll  scrollbar-hide  w-[100vw] duration-75 transition-all  ">
         {/* MOVIES */}
 
         <div
@@ -55,15 +57,19 @@ const DraggableSlider = ({ movies, type, time, path }) => {
 
             return (
               <Link
-                to={`/${path || ""}/${movie.path}`}
+                to={`/${path || "text"}/${movie.path}`}
                 key={index}
-                className="w-[16%]   h-[10rem] lg:flex-shrink-0"
+                className="w-[16%]   lg:flex-shrink-0"
               >
                 <img
-                  className={` w-full rounded-md object-cover ${
+                  className={` md:w-full md:h-full  rounded-md object-cover ${
                     hiddentMovie === index ? "opacity-20" : ""
                   }`}
-                  src={movie?.path || "/movie1.png"}
+                  src={
+                    movie?.path.startsWith("/")
+                      ? movie.path
+                      : `/${movie.path}` || "/movie1.png"
+                  }
                   alt=""
                 />
               </Link>

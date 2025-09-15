@@ -32,7 +32,7 @@ function DisneyOriginals({ movies, type, path }) {
                 <span
                   onClick={() => handleDrag(newIndex)}
                   key={newIndex}
-                  className={`w-[8px] h-[8px] rounded-full ${
+                  className={`w-[5px] h-[5px] md:w-[10px] md:h-[10px] rounded-full ${
                     currentIndex === newIndex ? "bg-[#02E7F5]" : "bg-gray-600"
                   } cursor-pointer relative`}
                 ></span>

@@ -19,10 +19,13 @@ export const Login = () => {
   const handleLogin = async () => {
     try {
       let myResponse = await axios.post(
-        "http://localhost:2000/login",
+        // "http://localhost:2000/login",
+        "https://dc77528ae38f.ngrok-free.app/Registers/CheckAndGenerateToken",
         userData
       );
-      console.log(myResponse.data);
+      // console.log(myResponse.data);
+      let token = myResponse?.data;
+      localStorage.setItem("dToken", token);
     } catch (error) {
       console.log(error.response.data.message);
     }
