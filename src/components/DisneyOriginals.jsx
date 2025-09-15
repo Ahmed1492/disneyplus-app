@@ -23,7 +23,7 @@ function DisneyOriginals({ movies, type, path }) {
         {/* Drag */}
         <div className="flex items-center justify-end w-full  gap-3">
           <h1 className="text-white text-xl whitespace-nowrap font-bold mb-3">
-            {type}
+            {movies[0]?.type}
           </h1>
           <div className="flex items-center justify-end w-full  gap-2">
             {Array(4)
@@ -53,7 +53,10 @@ function DisneyOriginals({ movies, type, path }) {
 
             return (
               <Link
-                to={`/${path || ""}/${movie.path}`}
+                to={`/${movies[0]?.cat || "test"}/${movie.title.replace(
+                  /\s+/g,
+                  "-"
+                )}`}
                 key={index}
                 className="w-[16%]    lg:flex-shrink-0"
               >

@@ -14,7 +14,7 @@ const DraggableSlider = ({ movies, type, time, path }) => {
   //   setShuffledSliderData([...movies].sort(() => Math.random() - 0.5));
   //   const interval = setInterval(() => {
   //     setCurrentIndex((prev) => (prev >= 3 ? 0 : prev + 1));
-  //   }, time);
+  //   }, movies[0]?.time || 1000);
   //   console.log("test");
 
   //   return () => clearInterval(interval); // Cleanup on unmount
@@ -25,12 +25,12 @@ const DraggableSlider = ({ movies, type, time, path }) => {
         {/* Drag */}
         <div className="flex items-center  justify-end w-full  gap-3">
           <h1 className="text-white text-xl whitespace-nowrap font-bold mb-3">
-            {type}
+            {movies[0]?.type}
           </h1>
           <div className="flex items-center justify-end w-full  gap-2">
             {type !== "Similares" &&
               movies?.length > 5 &&
-              Array(Math.round(movies?.length/5))
+              Array(Math.round(movies?.length / 5))
                 .fill()
                 .map((_, newIndex) => (
                   <span
@@ -57,7 +57,7 @@ const DraggableSlider = ({ movies, type, time, path }) => {
 
             return (
               <Link
-                to={`/${path || "text"}/${movie.path}`}
+                to={`/${movies[0]?.cat ||'test' }/${movie.title.replace(/\s+/g, "-")}`}
                 key={index}
                 className="w-[16%]   lg:flex-shrink-0"
               >

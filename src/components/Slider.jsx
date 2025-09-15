@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import { FaClock } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const HomeSlider = ({ data, type }) => {
   let [index, setIndex] = useState(0);
@@ -40,9 +41,12 @@ const HomeSlider = ({ data, type }) => {
       >
         <div className="text-white z-10 px-[10%] flex flex-col  items-start  h-full">
           <div className="flex flex-col items-end bgs-green-500 gap-3  h-full justify-center">
+            {/* IN SERIES TYPE ONLY */}
             {type === "series" && (
               <div className="flex  mt-[5rem] md:mt-0 items-center  gap-4 mb-[11rem] self-start">
                 <h1 className="text-xl md:text-3xl font-bold">Series</h1>
+
+                {/* SELECT */}
                 <select
                   className="bg-gray-700   py-2 px-3 rounded-md outline-none cursor-pointer"
                   name=""
@@ -67,32 +71,36 @@ const HomeSlider = ({ data, type }) => {
                 {data[index]?.desc || " "}
               </p>
               <div className="flex items-center mt-[2rem] gap-5">
-                <button className="bg-white px-3 py-3 md:px-6 md:py-3 flex items-center gap-4  text-sm rounded-md text-black font-bold">
+                <Link
+                  to={data[index]?.link}
+                  className="bg-white px-3 py-3 md:px-6 md:py-3 flex items-center gap-4  text-sm rounded-md text-black font-bold"
+                >
                   <span>
                     <FaPlay />
                   </span>
                   WATCH NOW
-                </button>
-                <button className="bg-transparent text-sm px-3 py-3 md:px-6 md:py-3 flex items-center gap-4  border rounded-md  font-semibold">
+                </Link>
+                <Link
+                  to={data[index]?.info}
+                  className="bg-transparent text-sm px-3 py-3 md:px-6 md:py-3 flex items-center gap-4  border rounded-md  font-semibold"
+                >
                   <FaClock />
                   MORE INFORMATION
-                </button>
+                </Link>
               </div>
             </div>
           </div>
-          {/* SERIES OPTION */}
 
           {/* Drag */}
-
           <div className="flex items-center justify-end w-full mb-4 gap-3">
-            <div className="flex items-center mt-[2rem] md:mt-0  justify-center md:justify-end w-full mb-4 gap-2">
+            <div className="flex items-center mt-[2rem] absolute right-[10%] bottom-20 md:mt-0  justify-center md:justify-end w-fullw mb-4 gap-2">
               {Array(data?.length)
                 .fill()
                 .map((_, newIndex) => (
                   <span
                     key={newIndex}
                     onClick={() => handleSlider(newIndex)}
-                    className={`w-[5px] h-[5px] md:w-[10px] md:h-[10px] rounded-full ${
+                    className={`w-[5px] h-[5px] md:w-[8px] md:h-[8px] rounded-full ${
                       index === newIndex ? "bg-[#02E7F5]" : "bg-gray-600"
                     } cursor-pointer relative`}
                   ></span>
