@@ -22,134 +22,98 @@ const HomeSlider = ({ data, type }) => {
   // }, []);
 
   return (
-    <div className=" h-[100vh] ">
+    <div className="h-screen relative">
       <div
         style={{
           backgroundImage: `
-      linear-gradient(
-        to top,
-        #141415,
-        rgba(11, 10, 10, 0.95),
-        rgba(11, 10, 10, 0.5),
-        rgba(11, 10, 10, 0.2),
-        rgba(22, 21, 21, 0.346)
-      ),
-      url('${data[index]?.background}')
-    `,
+        linear-gradient(
+          to top,
+          #141415,
+          rgba(11, 10, 10, 0.95),
+          rgba(11, 10, 10, 0.5),
+          rgba(11, 10, 10, 0.2),
+          rgba(22, 21, 21, 0.346)
+        ),
+        url('${data[index]?.background}')
+      `,
+          backgroundSize: "cover",
+          backgroundPosition: "center 30%",
         }}
-        className=" backgroundHero sm:bg-cover1  flex h-full   "
+        className="w-full h-full flex"
       >
-        <div className="text-white z-10 px-[10%] flex flex-col  items-start  h-full">
-          <div className="flex flex-col items-end bgs-green-500 gap-3  h-full justify-center">
-            {/* IN SERIES TYPE ONLY */}
-            {type === "series" && (
-              <div className="flex  mt-[5rem] md:mt-0 items-center  gap-4 mb-[11rem] self-start">
-                <h1 className="text-xl md:text-3xl font-bold">Series</h1>
+        <div className="text-white z-10 px-[10%] flex flex-col justify-center h-full">
+          {/* SERIES HEADER */}
+          {type === "series" && (
+            <div className="flex items-center gap-4 mb-12">
+              <h1 className="text-xl md:text-3xl font-bold">Series</h1>
+              <select className="bg-gray-700 py-2 px-3 rounded-md outline-none cursor-pointer">
+                <option>test 1</option>
+                <option>test 2</option>
+                <option>test 3</option>
+              </select>
+            </div>
+          )}
 
-                {/* SELECT */}
-                <select
-                  className="bg-gray-700   py-2 px-3 rounded-md outline-none cursor-pointer"
-                  name=""
-                  id=""
-                >
-                  <option value="">test 1</option>
-                  <option value="">test 1</option>
-                  <option value="">test 1</option>
-                  <option value="">test 1</option>
-                </select>
-              </div>
-            )}
-
-            {/* SERIES OPTION */}
-            <div className="flex flex-col bgs-red-600 gap-4 items-start  lg:items-start justify-end lg:h-auto ">
-              <img
-                className=" w-[9rem]  lg:w-[12rem] xl:w-[19rem]"
-                src={data[index]?.logo}
-                alt=""
-              />
-              <p className=" max-w-[96%] md:max-w-[70%] lg:max-w-[44%]  md:text-lg font-extralight">
-                {data[index]?.desc || " "}
-              </p>
-              <div className="flex items-center mt-[2rem] gap-5">
-                <Link
-                  to={data[index]?.link}
-                  className="bg-white px-3 py-3 md:px-6 md:py-3 flex items-center gap-4  text-sm rounded-md text-black font-bold"
-                >
-                  <span>
-                    <FaPlay />
-                  </span>
-                  WATCH NOW
-                </Link>
-                <Link
-                  to={data[index]?.info}
-                  className="bg-transparent text-sm px-3 py-3 md:px-6 md:py-3 flex items-center gap-4  border rounded-md  font-semibold"
-                >
-                  <FaClock />
-                  MORE INFORMATION
-                </Link>
-              </div>
+          {/* CONTENT */}
+          <div className="flex flex-col gap-4 items-start">
+            <img
+              className="w-[9rem] md:w-[12rem] xl:w-[19rem]"
+              src={data[index]?.logo}
+              alt=""
+            />
+            <p className="max-w-[95%] md:max-w-[70%] lg:max-w-[44%] md:text-lg font-extralight">
+              {data[index]?.desc || ""}
+            </p>
+            <div className="flex items-center mt-8 gap-5">
+              <Link
+                to={data[index]?.link}
+                className="bg-white px-4 md:px-6 py-2 md:py-3 flex items-center gap-2 text-sm rounded-md text-black font-bold"
+              >
+                <FaPlay />
+                WATCH NOW
+              </Link>
+              <Link
+                to={data[index]?.info}
+                className="border px-4 md:px-6 py-2 md:py-3 flex items-center gap-2 rounded-md text-sm font-semibold"
+              >
+                <FaClock />
+                MORE INFORMATION
+              </Link>
             </div>
           </div>
 
-          {/* Drag */}
-          <div className="flex items-center justify-end w-full mb-4 gap-3">
-            <div className="flex items-center mt-[2rem] absolute right-[10%] bottom-20 md:mt-0  justify-center md:justify-end w-fullw mb-4 gap-2">
-              {Array(data?.length)
-                .fill()
-                .map((_, newIndex) => (
-                  <span
-                    key={newIndex}
-                    onClick={() => handleSlider(newIndex)}
-                    className={`w-[5px] h-[5px] md:w-[8px] md:h-[8px] rounded-full ${
-                      index === newIndex ? "bg-[#02E7F5]" : "bg-gray-600"
-                    } cursor-pointer relative`}
-                  ></span>
-                ))}
-            </div>
-
-            {/* 
-            <span
-              onClick={() => setIndex(1)}
-              className="w-[10px] cursor-pointer h-[10px] rounded-full bg-gray-600 relative"
-            ></span>
-            <span
-              onClick={() => setIndex(2)}
-              className="w-[10px] cursor-pointer h-[10px] rounded-full bg-gray-600 relative"
-            ></span>
-            <span
-              onClick={() => setIndex(3)}
-              className="w-[10px] cursor-pointer h-[10px] rounded-full bg-gray-600 relative"
-            ></span> */}
+          {/* DOTS */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+            {Array(data?.length)
+              .fill()
+              .map((_, newIndex) => (
+                <span
+                  key={newIndex}
+                  onClick={() => handleSlider(newIndex)}
+                  className={`w-2 h-2 md:w-3 md:h-3 rounded-full cursor-pointer ${
+                    index === newIndex ? "bg-[#02E7F5]" : "bg-gray-600"
+                  }`}
+                ></span>
+              ))}
           </div>
 
-          {/* PRANSD */}
+          {/* BRANDS */}
           {type === "hero" && (
-            <div className=" flex items-center justify-center flex-wrap mt-[3rem] pb-5 w-full md:justify-between gap-2">
-              <img
-                className=" w-[7rem] h-[4rem] lg:w-[13rem] lg:h-[7rem] object-cover border rounded-md border-gray-800 bg-z"
-                src="/disneyLogo.svg"
-                alt=""
-              />
-              <img
-                className="w-[7rem] h-[4rem] lg:w-[13rem] lg:h-[7rem] object-cover border rounded-md border-gray-800 bg-z"
-                src="/pixarLogo.svg"
-                alt=""
-              />
-              <img
-                className="w-[7rem] h-[4rem] lg:w-[13rem] lg:h-[7rem] object-cover border rounded-md border-gray-800 bg-z"
-                src="/marvelLogo.svg"
-                alt=""
-              />
-              <img
-                className="w-[7rem] h-[4rem] lg:w-[13rem] lg:h-[7rem] object-cover border rounded-md border-gray-800 bg-z"
-                src="/starwarsLogo.svg"
-                alt=""
-              />
-              <img
-                className="w-[7rem] h-[4rem] lg:w-[13rem] lg:h-[7rem] object-cover border rounded-md border-gray-800 bg-z"
-                src="/nationalLogo.svg"
-                alt=""
-              />
+            <div className="flex flex-wrap justify-center md:justify-between gap-2 mt-12 pb-5 w-full">
+              {[
+                "/disneyLogo.svg",
+                "/pixarLogo.svg",
+                "/marvelLogo.svg",
+                "/starwarsLogo.svg",
+                "/nationalLogo.svg",
+              ].map((logo, i) => (
+                <img
+                  key={i}
+                  src={logo}
+                  alt="brand"
+                  className="w-[7rem] h-[4rem] lg:w-[13rem] lg:h-[7rem] object-cover border rounded-md border-gray-800"
+                />
+              ))}
             </div>
           )}
         </div>

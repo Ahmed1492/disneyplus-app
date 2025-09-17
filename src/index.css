@@ -18,8 +18,7 @@ body {
 
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  background-size: 100% 129%;
+  background-position: center 30% !important;
   position: relative;
 }
 .bg-z {

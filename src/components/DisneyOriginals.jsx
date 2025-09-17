@@ -1,32 +1,46 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useState, useRef } from "react";
 
-function DisneyOriginals({ movies, type, path }) {
+export default function MoviesSlider({ movies }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  let hiddentMovie = 5 * currentIndex + 5 || undefined;
+  const totalPages = Math.ceil(movies.length / 5);
+
+  const sliderRef = useRef(null);
+
   const handleDrag = (newIndex) => {
-    setCurrentIndex(newIndex);
+    if (newIndex >= 0 && newIndex < totalPages) {
+      setCurrentIndex(newIndex);
+    }
   };
 
-  // useEffect(() => {
-  //   setShuffledSliderData([...movies].sort(() => Math.random() - 0.5));
-  //   const interval = setInterval(() => {
-  //     setCurrentIndex((prev) => (prev >= 3 ? 0 : prev + 1));
-  //   }, time);
-  //   console.log("test");
+  // 🎯 Handle keys only when slider is focused
+  const handleKey = (e) => {
+    if (e.key === "ArrowRight") {
+      handleDrag(currentIndex + 1);
+    }
+    if (e.key === "ArrowLeft") {
+      handleDrag(currentIndex - 1);
+    }
+  };
 
-  //   return () => clearInterval(interval); // Cleanup on unmount
-  // }, [currentIndex]);
+  // 👉 Auto-fade the 6th visible element
+  const fadedIndex = currentIndex * 5 + 5;
+
   return (
-    <div className={`px-[10%]   overflow-x-hidden lg:overflow-x-hidden  `}>
-      <div className="flex items-center justify-betweenx ">
-        {/* Drag */}
-        <div className="flex items-center justify-end w-full  gap-3">
+    <div
+      ref={sliderRef}
+      tabIndex={0} // make it focusable
+      onKeyDown={handleKey} // only fires when this slider is focused
+      className="px-[10%] overflow-x-hidden outline-none"
+    >
+      {/* Header + Dots */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center justify-end w-full gap-3">
           <h1 className="text-white text-xl whitespace-nowrap font-bold mb-3">
             {movies[0]?.type}
           </h1>
-          <div className="flex items-center justify-end w-full  gap-2">
-            {Array(4)
+          <div className="flex items-center justify-end w-full gap-2">
+            {Array(totalPages)
               .fill()
               .map((_, newIndex) => (
                 <span
@@ -34,47 +48,41 @@ function DisneyOriginals({ movies, type, path }) {
                   key={newIndex}
                   className={`w-[5px] h-[5px] md:w-[10px] md:h-[10px] rounded-full ${
                     currentIndex === newIndex ? "bg-[#02E7F5]" : "bg-gray-600"
-                  } cursor-pointer relative`}
+                  } cursor-pointer`}
                 ></span>
               ))}
           </div>
         </div>
       </div>
-      <div className=" overflow-x-auto lg:overflow-x-hidden scrollbar-hide  w-[100vw] duration-75 transition-all  ">
-        {/* MOVIES */}
 
+      {/* Movies */}
+      <div className="overflow-x-auto lg:overflow-x-hidden scrollbar-hide w-full duration-75 transition-all">
         <div
-          className={`flex w-full gap-3  relative duration-700 transition-all`}
-          style={{ right: `${currentIndex * 82}%` }}
-          // style={{ right: `${currentIndex * 100}%` }}
+          className="flex gap-3 transition-all duration-700"
+          style={{
+            transform: `translateX(-${currentIndex * 100}%)`,
+          }}
         >
-          {movies?.map((movie, index) => {
-            const isLastInGroup = (index + 1) % 5 === 0;
-
-            return (
-              <Link
-                to={`/${movies[0]?.cat || "test"}/${movie.title.replace(
-                  /\s+/g,
-                  "-"
-                )}`}
-                key={index}
-                className="w-[16%]    lg:flex-shrink-0"
-              >
-                <img
-                  key={index}
-                  className={` w-full  lg:flex-shrink-0 rounded-md object-cover ${
-                    hiddentMovie === index ? "opacity-20" : ""
-                  }`}
-                  src={movie?.path || "/movie1.png"}
-                  alt=""
-                />
-              </Link>
-            );
-          })}
+          {movies?.map((movie, index) => (
+            <Link
+              to={`/${movies[0]?.cat || "test"}/${movie.title.replace(
+                /\s+/g,
+                "-"
+              )}`}
+              key={index}
+              className="w-[80%] sm:w-[45%] md:w-[30%] lg:w-[18%] flex-shrink-0"
+            >
+              <img
+                className={`w-full rounded-md object-cover transition-opacity duration-300 ${
+                  fadedIndex === index ? "opacity-20" : "opacity-100"
+                }`}
+                src={movie?.path || "/movie1.png"}
+                alt={movie.title}
+              />
+            </Link>
+          ))}
         </div>
       </div>
     </div>
   );
 }
-
-export default DisneyOriginals;
