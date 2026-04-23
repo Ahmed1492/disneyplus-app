@@ -1,154 +1,54 @@
-export const sliderOriginal = [
-  {
-    logo: "/originalLogo.svg",
-    background: "/bg-originals.png",
-    desc: `Following the fall of the Galactic Empire, anarchy has spread across the galaxy. A lone gunfighter makes his way through the Outer Rims, earning his place as a bounty hunter.`,
-    select: "",
-    link: "https://www.imdb.com/title/tt8111088", // The Mandalorian
-    info: "https://en.wikipedia.org/wiki/The_Mandalorian"
-  },
-  {
-    logo: "/heroLogo.svg",
-    background: "/d7.jpg",
-    desc: `The Disney and Pixar film "Luca" is set in a town on the Italian coast and tells the story of a teenager who spends an unforgettable summer full of adventures with his new friend Alberto.`,
-    select: "",
-    link: "https://www.imdb.com/title/tt12801262", // Luca
-    info: "https://en.wikipedia.org/wiki/Luca_(2021_film)"
-  },
-  {
-    logo: "/originalLogo.svg",
-    background: "/d3.jpg",
-    desc: `Following the fall of the Galactic Empire, anarchy has spread across the galaxy. A lone gunfighter makes his way through the Outer Rims, earning his place as a bounty hunter.`,
-    select: "",
-    link: "https://www.imdb.com/title/tt8111088",
-    info: "https://en.wikipedia.org/wiki/The_Mandalorian"
-  },
-  {
-    logo: "/originalLogo.svg",
-    background: "/d9.jpg",
-    desc: `Following the fall of the Galactic Empire, anarchy has spread across the galaxy. A lone gunfighter makes his way through the Outer Rims, earning his place as a bounty hunter.`,
-    select: "",
-    link: "https://www.imdb.com/title/tt8111088",
-    info: "https://en.wikipedia.org/wiki/The_Mandalorian"
-  },
-  {
-    logo: "/originalLogo.svg",
-    background: "/d6.jpg",
-    desc: `Following the fall of the Galactic Empire, anarchy has spread across the galaxy. A lone gunfighter makes his way through the Outer Rims, earning his place as a bounty hunter.`,
-    select: "",
-    link: "https://www.imdb.com/title/tt8111088",
-    info: "https://en.wikipedia.org/wiki/The_Mandalorian"
-  }
-];
+import popularMovies from "../mocks/MOVIE/Popular.json";
+import topRatedMovies from "../mocks/MOVIE/Top Rated.json";
+import topRatedSeries from "../mocks/TV SERIES/Top Rated.json";
+import onTheAir from "../mocks/TV SERIES/On The Air.json";
 
-export const seriesOrignal = [
-  { path: "orginalSeries1.png", title: "Series Original 1", time: 3000, type: 'Series', cat: 'original' },
-  { path: "/orginalSeries2.png", title: "Series Original 2" },
-  { path: "/orginalSeries3.png", title: "Series Original 3" },
-  { path: "/orginalSeries4.png", title: "Series Original 4" },
-  { path: "/orginalSeries5.png", title: "Series Original 5" },
-  { path: "/movie17.png", title: "Series Original 6" },
-  { path: "/movie7.png", title: "Series Original 7" },
-  { path: "/movie8.png", title: "Series Original 8" },
-  { path: "/movie9.png", title: "Series Original 9" },
-  { path: "/movie10.png", title: "Series Original 10" },
-  { path: "/movie11.png", title: "Series Original 11" },
-  { path: "/movie12.png", title: "Series Original 12" },
-  { path: "/movie13.png", title: "Series Original 13" },
-  { path: "/movie14.png", title: "Series Original 14" },
-  { path: "/movie15.png", title: "Series Original 15" },
-  { path: "/movie16.png", title: "Series Original 16" },
-  { path: "/movie18.png", title: "Series Original 17" },
-  { path: "/movie19.png", title: "Series Original 18" },
-  { path: "/movie7.png", title: "Series Original 30" },
-  { path: "/movie8.png", title: "Series Original 31" },
-  { path: "/movie9.png", title: "Series Original 32" },
-  { path: "/movie10.png", title: "Series Original 33" },
-  { path: "/movie3.png", title: "Series Original 26" },
-  { path: "/movie4.png", title: "Series Original 27" },
-  { path: "/movie5.png", title: "Series Original 28" },
-  { path: "/movie6.png", title: "Series Original 29" },
-  { path: "/movie7.png", title: "Series Original 30" },
-  { path: "/movie8.png", title: "Series Original 31" },
-  { path: "/movie9.png", title: "Series Original 32" },
-  { path: "/movie10.png", title: "Series Original 33" },
-  { path: "/movie11.png", title: "Series Original 34" },
-  { path: "/movie12.png", title: "Series Original 35" },
-];
+const TMDB = "https://image.tmdb.org/t/p/original";
 
-export const moviesOriginal = [
-  { path: "orginalMovies1.png", title: "Movie Original 1", time: 5000, type: 'Movies', cat: 'original' },
-  { path: "orginalMovies2.png", title: "Movie Original 2" },
-  { path: "orginalMovies3.png", title: "Movie Original 3" },
-  { path: "orginalMovies4.png", title: "Movie Original 4" },
-  { path: "orginalMovies5.png", title: "Movie Original 5" },
-  { path: "movie8.png", title: "Movie Original 6" },
-  { path: "movie9.png", title: "Movie Original 7" },
-  { path: "movie10.png", title: "Movie Original 8" },
-  { path: "movie11.png", title: "Movie Original 9" },
-  { path: "movie12.png", title: "Movie Original 10" },
-  { path: "movie13.png", title: "Movie Original 11" },
-  { path: "movie14.png", title: "Movie Original 12" },
-  { path: "movie15.png", title: "Movie Original 13" },
-  { path: "movie7.png", title: "Movie Original 14" },
-  { path: "movie16.png", title: "Movie Original 15" },
-  { path: "movie17.png", title: "Movie Original 16" },
-  { path: "movie18.png", title: "Movie Original 17" },
-  { path: "movie19.png", title: "Movie Original 18" },
-  { path: "movie20.png", title: "Movie Original 19" },
-  { path: "movie2.png", title: "Movie Original 20" },
-  { path: "movie4.png", title: "Movie Original 21" },
-  { path: "movie7.png", title: "Movie Original 22" },
-  { path: "movie8.png", title: "Movie Original 23" },
-  { path: "movie1.png", title: "Movie Original 24" },
-  { path: "movie2.png", title: "Movie Original 25" },
-  { path: "movie3.png", title: "Movie Original 26" },
-  { path: "movie4.png", title: "Movie Original 27" },
-  { path: "movie5.png", title: "Movie Original 28" },
-  { path: "movie6.png", title: "Movie Original 29" },
-  { path: "movie7.png", title: "Movie Original 30" },
-  { path: "movie8.png", title: "Movie Original 31" },
-  { path: "movie9.png", title: "Movie Original 32" },
-  { path: "movie10.png", title: "Movie Original 33" },
-  { path: "movie11.png", title: "Movie Original 34" },
-  { path: "movie12.png", title: "Movie Original 35" },
-];
+const withBackdrop = (arr) => arr.filter((x) => x.backdrop_path);
 
-export const shortsOriginal = [
-  { path: "orginalShort1.png", title: "Short Original 1", time: 3000, type: 'Short', cat: 'original' },
-  { path: "orginalShort2.png", title: "Short Original 2" },
-  { path: "orginalShort3.png", title: "Short Original 3" },
-  { path: "orginalShort4.png", title: "Short Original 4" },
-  { path: "orginalShort5.png", title: "Short Original 5" },
-  { path: "movie9.png", title: "Short Original 6" },
-  { path: "movie10.png", title: "Short Original 7" },
-  { path: "movie7.png", title: "Short Original 8" },
-  { path: "movie8.png", title: "Short Original 9" },
-  { path: "movie11.png", title: "Short Original 10" },
-  { path: "movie12.png", title: "Short Original 11" },
-  { path: "movie13.png", title: "Short Original 12" },
-  { path: "movie14.png", title: "Short Original 13" },
-  { path: "movie15.png", title: "Short Original 14" },
-  { path: "movie16.png", title: "Short Original 15" },
-  { path: "movie17.png", title: "Short Original 16" },
-  { path: "movie18.png", title: "Short Original 17" },
-  { path: "movie19.png", title: "Short Original 18" },
-  { path: "movie20.png", title: "Short Original 19" },
-  { path: "movie1.png", title: "Short Original 20" },
-  { path: "movie2.png", title: "Short Original 21" },
-  { path: "movie3.png", title: "Short Original 22" },
-  { path: "movie4.png", title: "Short Original 23" },
-  { path: "movie1.png", title: "Short Original 24" },
-  { path: "movie2.png", title: "Short Original 25" },
-  { path: "movie3.png", title: "Short Original 26" },
-  { path: "movie4.png", title: "Short Original 27" },
-  { path: "movie5.png", title: "Short Original 28" },
-  { path: "movie6.png", title: "Short Original 29" },
-  { path: "movie7.png", title: "Short Original 30" },
-  { path: "movie8.png", title: "Short Original 31" },
-  { path: "movie9.png", title: "Short Original 32" },
-  { path: "movie10.png", title: "Short Original 33" },
-  { path: "movie11.png", title: "Short Original 34" },
-  { path: "movie12.png", title: "Short Original 35" },
-];
+export const sliderOriginal = withBackdrop(topRatedSeries).slice(0, 4).map((s) => ({
+  background: `${TMDB}${s.backdrop_path}`,
+  desc: s.overview,
+  title: s.name,
+  link: `/series/${s.name.replace(/\s+/g, "-")}`,
+  trailerUrl: "https://www.youtube.com/embed/mc6UA37uqXg",
+  vote: s.vote_average,
+  year: s.first_air_date?.split("-")[0],
+}));
 
+export const seriesOrignal = topRatedSeries.map((s) => ({
+  path: `${TMDB}${s.poster_path}`,
+  title: s.name,
+  overview: s.overview,
+  vote: s.vote_average,
+  type: "Top Rated Series",
+  cat: "series",
+}));
+
+export const moviesOriginal = popularMovies.map((m) => ({
+  path: `${TMDB}${m.poster_path}`,
+  title: m.title,
+  overview: m.overview,
+  vote: m.vote_average,
+  type: "Popular Movies",
+  cat: "movies",
+}));
+
+export const shortsOriginal = onTheAir.map((s) => ({
+  path: `${TMDB}${s.poster_path}`,
+  title: s.name,
+  overview: s.overview,
+  vote: s.vote_average,
+  type: "On The Air",
+  cat: "series",
+}));
+
+export const topRatedMoviesOriginal = topRatedMovies.map((m) => ({
+  path: `${TMDB}${m.poster_path}`,
+  title: m.title,
+  overview: m.overview,
+  vote: m.vote_average,
+  type: "Top Rated Movies",
+  cat: "movies",
+}));

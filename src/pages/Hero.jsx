@@ -1,7 +1,22 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Slider from "../components/Slider";
+import DraggableSlider from "../components/DraggableSlider";
+import DisneyOriginals from "../components/DisneyOriginals";
+import Footer from "../components/Footer";
 import axios from "axios";
+import {
+  sliderHome,
+  inTrendHome,
+  disnyOriginalsHome,
+  actionHome,
+  animationHome,
+  docuseriesHome,
+  childrenHome,
+  topRatedSeriesHome,
+  airingTodayHome,
+} from "../data/homeData";
+
 const Hero = () => {
   let LoginValidations = async (token) => {
     try {
@@ -33,46 +48,24 @@ const Hero = () => {
     }
   }, []);
 
-  const data = [
-    {
-      logo: "/heroLogo.svg",
-      background: "/bg-homePage.png",
-      desc: `The Disney and Pixar film "Luca" is set in a town on the Italian
-              coast and tells the story of a teenager who spends an
-              unforgettable summer full of adventures with his new friend
-              Alberto. summer full of adventures with his new friend Alberto.`,
-      select: "",
-    },
-    {
-      logo: "/originalLogo.svg",
-      background: "/d1.jpg",
-      desc: `Following the fall of the Galactic Empire, anarchy has spread across the galaxy. A lone gunfighter makes his way through the Outer Rims, earning his place as a bounty hunter earning his place as a bounty hunter earning his place as a bounty hunter.`,
-      select: "",
-    },
-    {
-      logo: "/heroLogo.svg",
-      background: "/d3.jpg",
-      desc: `The Disney and Pixar film "Luca" is set in a town on the Italian
-              coast and tells the story of a teenager who spends an
-              unforgettable summer full of adventures with his new friend
-              Alberto. summer full of adventures with his new friend Alberto.`,
-      select: "",
-    },
-    {
-      logo: "/heroLogo.svg",
-      background: "/d3.jpg",
-      desc: `The Disney and Pixar film "Luca" is set in a town on the Italian
-              coast and tells the story of a teenager who spends an
-              unforgettable summer full of adventures with his new friend
-              Alberto. summer full of adventures with his new friend Alberto.`,
-      select: "",
-    },
-  ];
   return (
-    <div className="">
-      <Navbar />
-      <Slider type="hero" data={data} />
-    </div>
+    <>
+      <div className="min-h-screen bg-[#0f1014]">
+        <Navbar />
+        <Slider type="hero" data={sliderHome} />
+        <main className="flex flex-col gap-16 md:gap-20 py-16 md:py-20 stagger">
+          <div className="animate-fade-in-up"><DraggableSlider movies={inTrendHome} /></div>
+          <div className="animate-fade-in-up"><DisneyOriginals movies={disnyOriginalsHome} /></div>
+          <div className="animate-fade-in-up"><DraggableSlider movies={actionHome} /></div>
+          <div className="animate-fade-in-up"><DraggableSlider movies={animationHome} /></div>
+          <div className="animate-fade-in-up"><DraggableSlider movies={docuseriesHome} /></div>
+          <div className="animate-fade-in-up"><DraggableSlider movies={childrenHome} /></div>
+          <div className="animate-fade-in-up"><DraggableSlider movies={topRatedSeriesHome} /></div>
+          <div className="animate-fade-in-up"><DraggableSlider movies={airingTodayHome} /></div>
+        </main>
+      </div>
+      <Footer />
+    </>
   );
 };
 

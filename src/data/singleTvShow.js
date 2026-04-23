@@ -1,50 +1,34 @@
-export const sliderSingleSeries = [
-  {
-    logo: "/heroLogo.svg",
-    background: "/bg-homePage.png",
-    desc: `The Disney and Pixar film "Luca" is set in a town on the Italian coast and tells the story of a teenager who spends an unforgettable summer full of adventures with his new friend Alberto.`,
-    select: "",
-    link: "https://www.disney.co.uk/movies/luca", // Official Disney page
-    info: "https://en.wikipedia.org/wiki/Luca_(2021_film)" // Wikipedia,
-    , type: "hero"
-  },
-  {
-    logo: "/originalLogo.svg",
-    background: "/d1.jpg",
-    desc: `Following the fall of the Galactic Empire, anarchy has spread across the galaxy. A lone gunfighter makes his way through the Outer Rims, earning his place as a bounty hunter.`,
-    select: "",
-    link: "https://www.imdb.com/title/tt8111088", // IMDb for The Mandalorian
-    info: "https://en.wikipedia.org/wiki/The_Mandalorian" // Wikipedia
-  },
-  {
-    logo: "/heroLogo.svg",
-    background: "/d3.jpg",
-    desc: `The Disney and Pixar film "Luca" is set in a town on the Italian coast and tells the story of a teenager who spends an unforgettable summer full of adventures with his new friend Alberto.`,
-    select: "",
-    link: "https://www.disney.co.uk/movies/luca",
-    info: "https://en.wikipedia.org/wiki/Luca_(2021_film)"
-  },
-  {
-    logo: "/heroLogo.svg",
-    background: "/d3.jpg",
-    desc: `The Disney and Pixar film "Luca" is set in a town on the Italian coast and tells the story of a teenager who spends an unforgettable summer full of adventures with his new friend Alberto.`,
-    select: "",
-    link: "https://www.disney.co.uk/movies/luca",
-    info: "https://en.wikipedia.org/wiki/Luca_(2021_film)"
-  }
-];
+import popular from "../mocks/TV SERIES/Popular.json";
+import topRated from "../mocks/TV SERIES/Top Rated.json";
 
-export const similarSingleSeries = [
-  { path: "orginalMovies1.png", title: "Original Movie 1", type: "Similares" },
-  { path: "orginalMovies2.png", title: "Original Movie 2" },
-  { path: "orginalMovies3.png", title: "Original Movie 3" },
-  { path: "orginalMovies4.png", title: "Original Movie 4" },
-  { path: "orginalMovies5.png", title: "Original Movie 5" },
-];
-export const similarSingleSeries2 = [
-  { path: "orginalMovies1.png", title: "Original Movie 1", },
-  { path: "orginalMovies2.png", title: "Original Movie 2" },
-  { path: "orginalMovies3.png", title: "Original Movie 3" },
-  { path: "orginalMovies4.png", title: "Original Movie 4" },
-  { path: "orginalMovies5.png", title: "Original Movie 5" },
-];
+const TMDB = "https://image.tmdb.org/t/p/original";
+
+export const sliderSingleSeries = popular.filter((s) => s.backdrop_path).slice(0, 4).map((s) => ({
+  logo: "/seriesLogo.svg",
+  background: `${TMDB}${s.backdrop_path}`,
+  desc: s.overview,
+  link: `/series/${s.name.replace(/\s+/g, "-")}`,
+  info: "#",
+  type: "hero",
+  title: s.name,
+}));
+
+export const similarSingleSeries = topRated.slice(0, 10).map((s) => ({
+  path: `${TMDB}${s.poster_path}`,
+  title: s.name,
+  overview: s.overview,
+  vote: s.vote_average,
+  year: s.first_air_date?.split("-")[0],
+  type: "Similares",
+  cat: "series",
+}));
+
+export const similarSingleSeries2 = popular.slice(0, 10).map((s) => ({
+  path: `${TMDB}${s.poster_path}`,
+  title: s.name,
+  overview: s.overview,
+  vote: s.vote_average,
+  year: s.first_air_date?.split("-")[0],
+  type: "More Like This",
+  cat: "series",
+}));

@@ -8,27 +8,23 @@ import {
   seriesOrignal,
   shortsOriginal,
   sliderOriginal,
+  topRatedMoviesOriginal,
 } from "../data/originalData";
 
 const Originals = () => {
   return (
     <>
-      <div className=" flex flex-col bg-[#121214]">
+      <div className="min-h-screen bg-[#0f1014]">
         <Navbar />
-
-        <main className="flex-grow flex flex-col gap-[2rem]">
-          {/* Slider Original */}
-          <Slider data={sliderOriginal} />
-          {/* Series Orignal */}
-          <DraggableSlider movies={seriesOrignal} />
-          {/* Movies Orignal */}
-          <DraggableSlider movies={moviesOriginal} />
-          {/* Shorts Orignal */}
-          <DraggableSlider movies={shortsOriginal} />
+        <Slider type="originals" data={sliderOriginal} />
+        <main className="flex flex-col gap-14 py-12 stagger">
+          <div className="animate-fade-in-up"><DraggableSlider movies={seriesOrignal} /></div>
+          <div className="animate-fade-in-up"><DraggableSlider movies={moviesOriginal} /></div>
+          <div className="animate-fade-in-up"><DraggableSlider movies={shortsOriginal} /></div>
+          <div className="animate-fade-in-up"><DraggableSlider movies={topRatedMoviesOriginal} /></div>
         </main>
-
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 };

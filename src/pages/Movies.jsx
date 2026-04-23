@@ -16,23 +16,16 @@ import {
 const Movies = () => {
   return (
     <>
-      <div className="min-h-[185rem]  flex flex-col bg-[#121214]">
+      <div className="min-h-screen bg-[#0f1014]">
         <Navbar />
-        <main className="flex-grow flex flex-col gap-[4rem]">
-          {/* Slider Movies */}
-          <Slider data={sliderMovies} />
-          {/* In trend */}
-          <DraggableSlider movies={inTendMovies} />
-          {/* ORIGNIAL DISNY */}
-          <DisneyOriginals movies={disnyOriginalsMovies} />
-          {/* Action/Adventure */}
-          <DraggableSlider movies={actionMovies} />
-          {/* Animation */}
-          <DraggableSlider movies={animationMovies} />
-          {/* Docuseries */}
-          <DraggableSlider movies={docuseriesMovies} />
-          {/* Children */}
-          <DraggableSlider movies={childrenMovies} />
+        <Slider type="movies" data={sliderMovies} />
+        <main className="flex flex-col gap-14 py-12 stagger">
+          <div className="animate-fade-in-up"><DraggableSlider movies={inTendMovies} /></div>
+          <div className="animate-fade-in-up"><DisneyOriginals movies={disnyOriginalsMovies} /></div>
+          <div className="animate-fade-in-up"><DraggableSlider movies={actionMovies} /></div>
+          <div className="animate-fade-in-up"><DraggableSlider movies={animationMovies} /></div>
+          <div className="animate-fade-in-up"><DraggableSlider movies={docuseriesMovies} /></div>
+          <div className="animate-fade-in-up"><DraggableSlider movies={childrenMovies} /></div>
         </main>
       </div>
       <Footer />
