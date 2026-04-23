@@ -8,7 +8,7 @@ A full-featured Disney+ streaming platform clone built with **React.js** and **T
 
 ## 🚀 Live Demo  
 
-[![Live Demo](https://img.shields.io/badge/View%20Live-Vercel-blue?style=for-the-badge&logo=vercel)](https://luxivo-app-git-main-ahmed1492s-projects.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/View%20Live-Vercel-blue?style=for-the-badge&logo=vercel)](https://disneyplus-app-ivory.vercel.app/)
 
 
 ---
