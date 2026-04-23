@@ -6,9 +6,10 @@ A full-featured Disney+ streaming platform clone built with **React.js** and **T
 
 ---
 
-## Live Demo
+## 🚀 Live Demo  
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
+[![Deploy with Vercel](https://vercel.com/button)](https://disneyplus-app-ivory.vercel.app/)
+
 
 ---
 
